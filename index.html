@@ -179,6 +179,25 @@
   }
   ol.steps li strong{color:var(--text)}
 
+  /* FAQ accordion */
+  .faq{margin-top:24px}
+  .faq details{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:4px 20px;margin-bottom:12px;
+  }
+  .faq summary{
+    cursor:pointer;list-style:none;position:relative;
+    font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;
+    padding:18px 34px 18px 0;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:'+';position:absolute;right:0;top:14px;
+    color:var(--gold);font-size:1.5rem;font-weight:700;line-height:1;
+  }
+  .faq details[open] summary::after{content:'−'}
+  .faq .faq-a{padding:0 0 18px;margin:0;color:var(--text-dim)}
+
   footer{padding:40px 0 60px;text-align:center;color:var(--text-dim);font-size:.85rem}
 
   /* sticky mobile CTA */
@@ -286,6 +305,7 @@
     <h2 class="sec-title yes">✅ Para quien sí es esto</h2>
     <ul class="bullets yes">
       <li>Para personas que sí quieran tener su música en las plataformas digitales (spotify, apple music, youtube, etc) y estén comprometidas con su proyecto…</li>
+      <li>Para personas que realmente quieran compartir y escuchar su música con un sonido profesional.</li>
       <li>Que puedan hacer tomas "decentes" de sus instrumentos y voces (y con decentes me refiero a que entren bien por tu interfaz o tarjeta de audio, lleguen al programa donde grabas y no tengan tanto ruido.</li>
     </ul>
 
@@ -350,7 +370,7 @@
     <h2 class="sec-title">¿De qué va todo esto?</h2>
     <p>Tal cual lo leíste, ayudarte a mezclar 1 de tus canciones por solo <strong>$200 pesos</strong>.</p>
     <div class="highlight-box">
-      <strong>Ojo:</strong> mi tarifa normal por canción es de <strong>$1,000 pesos</strong> (incluye mezcla y masterización). Esta ronda es una cuota mínima de $200 pesos, no mi precio de siempre.
+      <strong>Ojo:</strong> mi tarifa normal por canción es de <strong>$1,000 pesos</strong> (incluye mezcla y masterización). Esta ronda es una cuota mínima de $200 pesos (también incluye mezcla y masterización), no mi precio de siempre.
     </div>
 
     <h2 class="sec-title" style="margin-top:36px">¿Por qué hago esto?</h2>
@@ -424,9 +444,67 @@
     <h3 style="margin-top:32px;font-size:1.1rem">¿Cuál es el compromiso?</h3>
     <p>Que al final sí o sí subamos tu rola a plataformas digitales (spotify, apple music, etc).</p>
     <p>Obviamente si el resultado final no te gusta pues no la subimos, pero dudo que eso pase. ;)</p>
-    <p>Así que, aparte de la cuota de esta ronda, esto es lo único que te pido a cambio de todo el trabajo y esfuerzo que te estaré dando.</p>
 
-    <h2 class="sec-title" style="margin-top:36px">¡Conclusión!</h2>
+    <h3 style="margin-top:32px;font-size:1.1rem">¿Cómo es el pago?</h3>
+    <p>Es por transferencia bancaria. Se cubren $100 pesos para apartar tu lugar y arrancar el proceso, y los otros $100 se cubren al finalizar la canción, solo si te gustó el resultado.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">Preguntas frecuentes</h2>
+    <div class="faq">
+      <details>
+        <summary>¿Qué pasa si no me gusta el resultado final?</summary>
+        <p class="faq-a">Te devolvemos tu dinero. Como solo pagas $100 para apartar tu lugar, si el resultado no te convence simplemente te regresamos esos $100 y no pasa nada. ;)</p>
+      </details>
+      <details>
+        <summary>¿Cómo es el método de pago?</summary>
+        <p class="faq-a">Por transferencia bancaria. $100 pesos para apartar tu lugar y arrancar el proceso, y los otros $100 al finalizar la canción, solo si te gustó el resultado.</p>
+      </details>
+      <details>
+        <summary>¿Los $200 incluyen mezcla y masterización?</summary>
+        <p class="faq-a">Sí, el precio incluye ambas cosas.</p>
+      </details>
+      <details>
+        <summary>¿Cuántos ajustes o revisiones incluye la mezcla?</summary>
+        <p class="faq-a">Los ajustes necesarios para que la mezcla quede como te guste, dentro de esa ronda de revisión.</p>
+      </details>
+      <details>
+        <summary>¿Puedo pedir un cambio después de que ya aprobé la mezcla final?</summary>
+        <p class="faq-a">Sí se puede, pero queda sujeto a disponibilidad.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no quedo seleccionad@ en esta ronda?</summary>
+        <p class="faq-a">No pasa nada, puedes volver a aplicar sin problema en la siguiente ronda.</p>
+      </details>
+      <details>
+        <summary>¿En qué formato me entregas el archivo final?</summary>
+        <p class="faq-a">En formato WAV.</p>
+      </details>
+      <details>
+        <summary>¿Tú subes la canción a las plataformas o la subo yo?</summary>
+        <p class="faq-a">Cada artista debe tener su propio perfil, así que lo recomendable es que cuentes con tu propia cuenta. Nosotros podemos subirla en el perfil del estudio como alternativa si aún no tienes una.</p>
+      </details>
+      <details>
+        <summary>¿Quién se queda con los derechos de la canción?</summary>
+        <p class="faq-a">Tú te quedas con todos los derechos de tu rola.</p>
+      </details>
+      <details>
+        <summary>¿Puedo escuchar un avance antes de la entrega final?</summary>
+        <p class="faq-a">Sí, el avance te lo comparto al momento de entregar la mezcla, ya que después entramos a la ronda de revisión.</p>
+      </details>
+      <details>
+        <summary>¿Trabajas remoto o hay que ir a tu estudio?</summary>
+        <p class="faq-a">Todo el proceso es remoto, a menos que te encuentres en Tijuana.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">¡Conclusión!</h2>
     <p>Si estás de acuerdo con todo lo anterior:</p>
     <ul class="bullets yes">
       <li>Puedes entregar audios como los que están de ejemplo</li>
