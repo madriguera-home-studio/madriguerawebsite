@@ -163,7 +163,56 @@
     width:100%;height:auto;object-fit:contain;border-radius:10px;
     border:1px solid var(--border);margin:0 0 16px;display:block;
     break-inside:avoid;-webkit-column-break-inside:avoid;
+    cursor:zoom-in;transition:border-color .15s ease;
   }
+  .grid img:hover{border-color:var(--gold-dim)}
+  .grid img:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .grid-hint{font-size:.95rem;color:var(--text-dim);margin:0}
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(8,8,10,.94);
+    display:none;align-items:center;justify-content:center;
+    padding:56px 64px;
+    touch-action:pan-y;
+  }
+  .lightbox.open{display:flex;animation:lbFade .18s ease}
+  @keyframes lbFade{from{opacity:0}to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
+  .lightbox img{
+    max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;border-radius:8px;
+    box-shadow:0 10px 40px rgba(0,0,0,.6);
+    user-select:none;-webkit-user-drag:none;
+  }
+  .lb-btn{
+    position:absolute;
+    background:rgba(28,28,33,.9);color:var(--text);
+    border:1px solid var(--border);border-radius:50%;
+    width:48px;height:48px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;line-height:1;cursor:pointer;
+    font-family:'Montserrat',Arial,sans-serif;
+  }
+  .lb-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .lb-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .lb-close{top:14px;right:14px}
+  .lb-prev{left:10px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:10px;top:50%;transform:translateY(-50%)}
+  .lb-count{
+    position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+    font-family:'Montserrat',sans-serif;font-weight:600;font-size:.9rem;
+    color:var(--text-dim);
+  }
+  @media (max-width:640px){
+    .lightbox{padding:64px 8px 56px}
+    .lb-prev,.lb-next{top:auto;bottom:6px;transform:none;width:44px;height:44px}
+    .lb-prev{left:16px}
+    .lb-next{right:16px}
+    .lb-count{bottom:18px}
+  }
+  body.lb-lock{overflow:hidden}
 
   /* steps */
   ol.steps{margin:0;padding:0;list-style:none;counter-reset:step}
@@ -414,7 +463,13 @@ src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
 <section class="alt">
   <div class="wrap">
     <h2 class="sec-title">🎧 Lo que dicen algunos artistas con los que ya he trabajado</h2>
+    <p class="grid-hint">Toca cualquier captura para verla en grande.</p>
     <div class="grid">
+      <!-- Nuevos: Iram Chaves (2) y Gabo - Vagabvndo (1), desde Google Drive -->
+      <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1I7tq3WMbRHSwbhESPaaiHAQRzQqevIvG&sz=w2000" alt="Testimonio de Iram Chaves (1 de 2)">
+      <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1u-YY2G8kYtThT9gURki9TDat_1Lc4TBd&sz=w2000" alt="Testimonio de Iram Chaves (2 de 2)">
+      <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/thumbnail?id=1c8uVF0ccnNTd_8qeFrGH_NsMaCBn9yGT&sz=w2000" alt="Testimonio de Gabo - Vagabvndo">
+      <!-- Testimonios anteriores -->
       <img loading="lazy" src="https://assets.cdn.filesafe.space/bz7yTTuRbWjqdUP7hjoT/media/69b4c6cceba487b502388c06.png" alt="Testimonio">
       <img loading="lazy" src="https://assets.cdn.filesafe.space/bz7yTTuRbWjqdUP7hjoT/media/69b4c6cdfc51284d66854966.png" alt="Testimonio">
       <img loading="lazy" src="https://assets.cdn.filesafe.space/bz7yTTuRbWjqdUP7hjoT/media/69b4c6cdcab7f70833c27603.png" alt="Testimonio">
@@ -544,6 +599,81 @@ src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
 <div class="sticky-cta">
   <a class="cta-btn" href="https://www.madriguerahomestudio.com/mix-form-page" target="_blank" rel="noopener" style="width:100%">Aplicar ahora →</a>
 </div>
+
+<!-- Lightbox de testimonios -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Testimonio en pantalla completa">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Anterior">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Siguiente">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+(function(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.grid img'));
+  var box = document.getElementById('lightbox');
+  var big = document.getElementById('lbImg');
+  var count = document.getElementById('lbCount');
+  var btnClose = document.getElementById('lbClose');
+  var btnPrev = document.getElementById('lbPrev');
+  var btnNext = document.getElementById('lbNext');
+  var current = 0;
+  var lastFocus = null;
+
+  function show(i){
+    current = (i + imgs.length) % imgs.length;
+    big.src = imgs[current].currentSrc || imgs[current].src;
+    big.alt = imgs[current].alt;
+    if (imgs[current].referrerPolicy) big.referrerPolicy = imgs[current].referrerPolicy;
+    count.textContent = (current + 1) + ' / ' + imgs.length;
+  }
+  function open(i){
+    lastFocus = document.activeElement;
+    show(i);
+    box.classList.add('open');
+    document.body.classList.add('lb-lock');
+    btnClose.focus();
+  }
+  function close(){
+    box.classList.remove('open');
+    document.body.classList.remove('lb-lock');
+    big.src = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  imgs.forEach(function(img, i){
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.addEventListener('click', function(){ open(i); });
+    img.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function(e){ e.stopPropagation(); show(current - 1); });
+  btnNext.addEventListener('click', function(e){ e.stopPropagation(); show(current + 1); });
+  box.addEventListener('click', function(e){ if (e.target === box) close(); });
+
+  document.addEventListener('keydown', function(e){
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+  // Deslizar con el dedo en celular
+  var startX = null;
+  box.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  box.addEventListener('touchend', function(e){
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) show(dx < 0 ? current + 1 : current - 1);
+    startX = null;
+  });
+})();
+</script>
 
 </body>
 </html>
