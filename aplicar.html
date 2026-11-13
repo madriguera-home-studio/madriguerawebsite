@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aplicar - Madriguera Home Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@400;700&display=swap">
+<style>
+  :root{
+    --bg:#0e0e10; --card:#1c1c21; --card-2:#232329; --border:#2b2b31; --border-2:#3a3a42;
+    --text:#f2f2f0; --text-dim:#b3b3bb; --gold:#f2b705; --gold-dim:#caa23f; --red:#ff5c5c;
+    --radius:14px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; color:var(--text); font-family:'Lato',Arial,sans-serif; font-size:17px; line-height:1.6;
+    background:radial-gradient(ellipse at top, rgba(242,183,5,.10), transparent 55%), var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:560px;margin:0 auto;padding:32px 16px 48px}
+  .top{text-align:center;margin-bottom:22px}
+  .eyebrow{
+    display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--bg);background:var(--gold);padding:5px 12px;border-radius:999px;margin-bottom:12px;
+  }
+  h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.55rem;line-height:1.25;margin:0 0 6px}
+  h1 span{color:var(--gold)}
+  .sub{color:var(--text-dim);margin:0;font-size:.98rem}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .progress{height:5px;background:var(--border)}
+  .progress i{display:block;height:100%;width:20%;background:var(--gold);transition:width .25s ease}
+  .body{padding:26px 22px 8px}
+  .paso-num{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .step{display:none}
+  .step.on{display:block;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.step.on{animation:none}.progress i{transition:none}}
+
+  .q{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.12rem;line-height:1.35;margin:0 0 16px}
+  .q .req{color:var(--gold)}
+  .field{margin-bottom:16px}
+  label.lbl{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.92rem;margin-bottom:6px}
+  input[type=text],input[type=email],input[type=tel],input[type=url],select{
+    width:100%;font:inherit;font-size:16px;color:var(--text);background:var(--card-2);border:1px solid var(--border-2);
+    border-radius:10px;padding:13px 14px;outline:none;transition:border-color .15s ease;
+  }
+  input::placeholder{color:#7d7d86}
+  input:focus,select:focus{border-color:var(--gold)}
+  .tel{display:flex;gap:8px}
+  .tel select{flex:0 0 118px;padding-right:6px}
+  .err{color:var(--red);font-size:.88rem;margin-top:6px;display:none}
+  .field.bad input,.field.bad select{border-color:var(--red)}
+  .field.bad .err,.opts.bad + .err{display:block}
+
+  .opts{display:grid;gap:10px}
+  .opt{
+    display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+    font:inherit;font-size:1rem;color:var(--text);background:var(--card-2);border:1px solid var(--border-2);
+    border-radius:10px;padding:13px 14px;transition:border-color .15s ease, background .15s ease;
+  }
+  .opt:hover{border-color:var(--gold-dim)}
+  .opt:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .opt .dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--border-2);display:flex;align-items:center;justify-content:center}
+  .opt[aria-checked=true]{border-color:var(--gold);background:rgba(242,183,5,.08)}
+  .opt[aria-checked=true] .dot{border-color:var(--gold)}
+  .opt[aria-checked=true] .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold)}
+  .opts.dos{grid-template-columns:1fr 1fr}
+  .opts.bad .opt{border-color:var(--red)}
+  .extra{margin-top:22px;display:none}
+  .extra.on{display:block}
+  .note{color:var(--text-dim);font-size:.92rem;margin:12px 0 0}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px 22px}
+  .btn{
+    font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;border-radius:10px;cursor:pointer;
+    padding:14px 22px;border:1px solid transparent;transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn-main{background:var(--gold);color:#141414;box-shadow:0 6px 22px rgba(242,183,5,.22);margin-left:auto}
+  .btn-main:hover{transform:translateY(-1px)}
+  .btn-main[disabled]{opacity:.6;cursor:wait;transform:none}
+  .btn-back{background:transparent;color:var(--text-dim);border-color:var(--border-2)}
+  .btn-back:hover{color:var(--text)}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .send-err{display:none;margin:0 22px 18px;padding:12px 14px;border-radius:10px;border:1px solid var(--red);color:var(--text);background:rgba(255,92,92,.08);font-size:.95rem}
+  .send-err.on{display:block}
+  .foot{text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:18px}
+
+  @media (max-width:480px){
+    .page{padding:22px 16px 40px}
+    h1{font-size:1.35rem}
+    .body{padding:22px 18px 6px}
+    .nav{padding:14px 18px 18px}
+    .tel select{flex-basis:104px}
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2556267281387929');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<main class="page">
+  <div class="top">
+    <span class="eyebrow">Aplicación</span>
+    <h1>Mezcla tu canción por <span>$200 pesos</span></h1>
+    <p class="sub">Son 5 pasos cortos. Te contacto por WhatsApp en máximo 24 horas.</p>
+  </div>
+
+  <form class="card" id="form" novalidate>
+    <div class="progress" aria-hidden="true"><i id="barra"></i></div>
+
+    <div class="body">
+      <!-- Paso 1 -->
+      <section class="step on" data-paso="1">
+        <div class="paso-num">Paso 1 de 5</div>
+        <p class="q">Tus datos de contacto</p>
+        <div class="field">
+          <label class="lbl" for="nombre">Nombre y apellido <span class="req">*</span></label>
+          <input type="text" id="nombre" autocomplete="name" placeholder="Ej. Ana López" maxlength="120">
+          <div class="err">Escribe tu nombre y apellido.</div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="email">Correo <span class="req">*</span></label>
+          <input type="email" id="email" autocomplete="email" inputmode="email" placeholder="tucorreo@ejemplo.com" maxlength="200">
+          <div class="err">Escribe un correo válido.</div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="telefono">Número de WhatsApp <span class="req">*</span></label>
+          <div class="tel">
+            <select id="lada" aria-label="Código de país">
+              <option value="+52" selected>🇲🇽 +52</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+57">🇨🇴 +57</option>
+              <option value="+54">🇦🇷 +54</option>
+              <option value="+56">🇨🇱 +56</option>
+              <option value="+51">🇵🇪 +51</option>
+              <option value="+502">🇬🇹 +502</option>
+              <option value="+503">🇸🇻 +503</option>
+              <option value="+504">🇭🇳 +504</option>
+              <option value="+506">🇨🇷 +506</option>
+              <option value="+593">🇪🇨 +593</option>
+              <option value="+58">🇻🇪 +58</option>
+              <option value="+34">🇪🇸 +34</option>
+            </select>
+            <input type="tel" id="telefono" autocomplete="tel-national" inputmode="tel" placeholder="664 123 4567" maxlength="20">
+          </div>
+          <div class="err">Escribe tu número a 10 dígitos.</div>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="sitio">No llenar</label><input type="text" id="sitio" tabindex="-1" autocomplete="off">
+        </div>
+      </section>
+
+      <!-- Paso 2 -->
+      <section class="step" data-paso="2">
+        <div class="paso-num">Paso 2 de 5</div>
+        <p class="q" id="q-genero">¿Qué género es tu proyecto? <span class="req">*</span></p>
+        <div class="opts" role="radiogroup" aria-labelledby="q-genero" data-campo="genero">
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Pop"><span class="dot"></span>Pop</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Rock"><span class="dot"></span>Rock</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Indie"><span class="dot"></span>Indie</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Regional"><span class="dot"></span>Regional</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Alternativo"><span class="dot"></span>Alternativo</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Rap / Hip-Hop"><span class="dot"></span>Rap / Hip-Hop</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Otro"><span class="dot"></span>Otro</button>
+        </div>
+        <div class="err">Elige una opción.</div>
+      </section>
+
+      <!-- Paso 3 -->
+      <section class="step" data-paso="3">
+        <div class="paso-num">Paso 3 de 5</div>
+        <p class="q" id="q-grabacion">¿Cómo grabaste tus pistas? <span class="req">*</span></p>
+        <div class="opts" role="radiogroup" aria-labelledby="q-grabacion" data-campo="grabacion">
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Estudio o home studio"><span class="dot"></span>Grabé en un estudio profesional o home studio</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Interfaz o tarjeta de audio"><span class="dot"></span>Grabé usando una interfaz o tarjeta de audio</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Sin interfaz (BandLab, GarageBand)"><span class="dot"></span>Grabé sin interfaz, usando directamente apps como BandLab o GarageBand móvil</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Microfono del telefono"><span class="dot"></span>Grabé con el micrófono del teléfono</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Otro"><span class="dot"></span>Otro</button>
+        </div>
+        <div class="err">Elige una opción.</div>
+      </section>
+
+      <!-- Paso 4 -->
+      <section class="step" data-paso="4">
+        <div class="paso-num">Paso 4 de 5</div>
+        <p class="q" id="q-plataformas">¿Planeas subir esta canción a plataformas digitales (Spotify, Apple Music, etc.)? <span class="req">*</span></p>
+        <div class="opts dos" role="radiogroup" aria-labelledby="q-plataformas" data-campo="plataformas">
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="Si"><span class="dot"></span>Sí</button>
+          <button type="button" class="opt" role="radio" aria-checked="false" data-v="No"><span class="dot"></span>No</button>
+        </div>
+        <div class="err">Elige una opción.</div>
+
+        <div class="extra" id="extra-distribuidora">
+          <p class="q" id="q-distribuidora">¿Ya cuentas con una distribuidora o sabes cuál vas a usar?</p>
+          <div class="opts dos" role="radiogroup" aria-labelledby="q-distribuidora" data-campo="distribuidora">
+            <button type="button" class="opt" role="radio" aria-checked="false" data-v="Si"><span class="dot"></span>Sí</button>
+            <button type="button" class="opt" role="radio" aria-checked="false" data-v="No"><span class="dot"></span>No</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 5 -->
+      <section class="step" data-paso="5">
+        <div class="paso-num">Paso 5 de 5</div>
+        <div class="field">
+          <label class="q" for="demo" style="display:block">Comparte el enlace para escuchar tu canción (Google Drive, WeTransfer, etc.) <span class="req">*</span></label>
+          <input type="url" id="demo" inputmode="url" placeholder="https://drive.google.com/..." maxlength="1000" autocomplete="off">
+          <div class="err">Pega un enlace válido (debe empezar con https://).</div>
+        </div>
+        <p class="note">Si es de Google Drive, revisa que el enlace tenga permiso de "Cualquier persona con el enlace" para que pueda escucharlo.</p>
+      </section>
+    </div>
+
+    <div class="send-err" id="send-err" role="alert">No se pudo enviar tu aplicación. Revisa tu conexión e intenta de nuevo.</div>
+
+    <div class="nav">
+      <button type="button" class="btn btn-back" id="atras" hidden>← Atrás</button>
+      <button type="submit" class="btn btn-main" id="siguiente">Siguiente →</button>
+    </div>
+  </form>
+
+  <p class="foot">Madriguera Home Studio · Miguel</p>
+</main>
+
+<script>
+(function(){
+  // ---- Ajustes ----
+  var SUPABASE_URL = 'https://ymwbrcaplcsvcqmmqzqq.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_DiMV6uByUyxXGjvJsy24gg_IzyeIhpZ';
+  var PAGINA_ACEPTADO = 'gracias.html';
+  var PAGINA_NO_CALIFICADO = 'no-calificado.html';
+  // -----------------
+
+  var TOTAL = 5;
+  var paso = 1;
+  var datos = { genero: null, grabacion: null, plataformas: null, distribuidora: null };
+  var form = document.getElementById('form');
+  var barra = document.getElementById('barra');
+  var btnSig = document.getElementById('siguiente');
+  var btnAtras = document.getElementById('atras');
+  var sendErr = document.getElementById('send-err');
+  var $ = function(id){ return document.getElementById(id); };
+
+  function mostrar(n){
+    paso = n;
+    document.querySelectorAll('.step').forEach(function(s){ s.classList.toggle('on', Number(s.dataset.paso) === n); });
+    barra.style.width = (n / TOTAL * 100) + '%';
+    btnAtras.hidden = n === 1;
+    btnSig.textContent = n === TOTAL ? 'Enviar aplicación' : 'Siguiente →';
+    sendErr.classList.remove('on');
+    var primero = document.querySelector('.step.on input, .step.on .opt');
+    if (primero && n > 1) primero.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Opciones tipo boton
+  document.querySelectorAll('.opts').forEach(function(grupo){
+    grupo.addEventListener('click', function(e){
+      var b = e.target.closest('.opt'); if (!b) return;
+      grupo.querySelectorAll('.opt').forEach(function(o){ o.setAttribute('aria-checked', o === b ? 'true' : 'false'); });
+      grupo.classList.remove('bad');
+      var campo = grupo.dataset.campo;
+      datos[campo] = b.dataset.v;
+      if (campo === 'plataformas') {
+        $('extra-distribuidora').classList.toggle('on', b.dataset.v === 'Si');
+        if (b.dataset.v !== 'Si') {
+          datos.distribuidora = null;
+          document.querySelectorAll('[data-campo=distribuidora] .opt').forEach(function(o){ o.setAttribute('aria-checked', 'false'); });
+        }
+      }
+      // En los pasos de una sola pregunta, avanzar solo
+      if (campo === 'genero' || campo === 'grabacion') setTimeout(function(){ mostrar(paso + 1); }, 220);
+    });
+  });
+
+  function marcar(id, ok){ $(id).closest('.field').classList.toggle('bad', !ok); return ok; }
+  function digitos(){ return $('telefono').value.replace(/\D/g, ''); }
+  function urlValida(v){ return /^https?:\/\/[^\s\/]+\.[^\s]+$/i.test(v); }
+
+  function validar(n){
+    if (n === 1) {
+      var nombre = $('nombre').value.trim();
+      var a = marcar('nombre', nombre.length >= 2);
+      var b = marcar('email', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('email').value.trim()));
+      var largo = $('lada').value === '+52' ? digitos().length === 10 : digitos().length >= 7 && digitos().length <= 12;
+      var c = marcar('telefono', largo);
+      var malo = document.querySelector('.step.on .field.bad input'); if (malo) malo.focus();
+      return a && b && c;
+    }
+    var campos = { 2: 'genero', 3: 'grabacion', 4: 'plataformas' };
+    if (campos[n]) {
+      var ok = !!datos[campos[n]];
+      document.querySelector('[data-campo=' + campos[n] + ']').classList.toggle('bad', !ok);
+      return ok;
+    }
+    if (n === 5) {
+      var v = $('demo').value.trim();
+      if (v && !/^https?:\/\//i.test(v) && /\./.test(v)) { v = 'https://' + v; $('demo').value = v; }
+      var okUrl = marcar('demo', urlValida(v));
+      if (!okUrl) $('demo').focus();
+      return okUrl;
+    }
+    return true;
+  }
+
+  // Quitar el rojo al escribir
+  ['nombre', 'email', 'telefono', 'demo'].forEach(function(id){
+    $(id).addEventListener('input', function(){ $(id).closest('.field').classList.remove('bad'); });
+  });
+
+  btnAtras.addEventListener('click', function(){ if (paso > 1) mostrar(paso - 1); });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!validar(paso)) return;
+    if (paso < TOTAL) { mostrar(paso + 1); return; }
+    enviar();
+  });
+
+  function irA(url){ window.location.href = url; }
+
+  function enviar(){
+    // Trampa para robots: si llenaron el campo oculto, no se guarda nada
+    if ($('sitio').value) { irA(PAGINA_ACEPTADO); return; }
+
+    btnSig.disabled = true; btnSig.textContent = 'Enviando...';
+    sendErr.classList.remove('on');
+
+    var payload = {
+      nombre: $('nombre').value.trim().replace(/\s+/g, ' '),
+      email: $('email').value.trim(),
+      telefono: $('lada').value + ' ' + $('telefono').value.trim(),
+      genero: datos.genero,
+      grabacion: datos.grabacion,
+      plataformas: datos.plataformas,
+      distribuidora: datos.distribuidora,
+      demo_url: $('demo').value.trim()
+    };
+
+    fetch(SUPABASE_URL + '/rest/v1/rpc/enviar_aplicacion', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+      body: JSON.stringify({ datos: payload })
+    })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(res){
+      var aceptado = res && res.resultado === 'Qualified';
+      try {
+        if (window.fbq) {
+          if (aceptado) fbq('track', 'Lead', { content_name: 'Aplicacion mezcla' });
+          else fbq('trackCustom', 'AplicacionDescalificada');
+        }
+      } catch (err) {}
+      // Pequena pausa para que Meta registre el evento antes de cambiar de pagina
+      setTimeout(function(){ irA(aceptado ? PAGINA_ACEPTADO : PAGINA_NO_CALIFICADO); }, 700);
+    })
+    .catch(function(err){
+      console.error(err);
+      btnSig.disabled = false; btnSig.textContent = 'Enviar aplicación';
+      sendErr.classList.add('on');
+    });
+  }
+
+  mostrar(1);
+})();
+</script>
+</body>
+</html>
