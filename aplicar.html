@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNW7N7XT');</script>
+<!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aplicar - Madriguera Home Studio</title>
@@ -117,6 +124,10 @@ src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNW7N7XT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <main class="page">
   <div class="top">
     <span class="eyebrow">Aplicación</span>
@@ -208,14 +219,6 @@ src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
           <button type="button" class="opt" role="radio" aria-checked="false" data-v="No"><span class="dot"></span>No</button>
         </div>
         <div class="err">Elige una opción.</div>
-
-        <div class="extra" id="extra-distribuidora">
-          <p class="q" id="q-distribuidora">¿Ya cuentas con una distribuidora o sabes cuál vas a usar?</p>
-          <div class="opts dos" role="radiogroup" aria-labelledby="q-distribuidora" data-campo="distribuidora">
-            <button type="button" class="opt" role="radio" aria-checked="false" data-v="Si"><span class="dot"></span>Sí</button>
-            <button type="button" class="opt" role="radio" aria-checked="false" data-v="No"><span class="dot"></span>No</button>
-          </div>
-        </div>
       </section>
 
       <!-- Paso 5 -->
@@ -280,15 +283,8 @@ src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
       grupo.classList.remove('bad');
       var campo = grupo.dataset.campo;
       datos[campo] = b.dataset.v;
-      if (campo === 'plataformas') {
-        $('extra-distribuidora').classList.toggle('on', b.dataset.v === 'Si');
-        if (b.dataset.v !== 'Si') {
-          datos.distribuidora = null;
-          document.querySelectorAll('[data-campo=distribuidora] .opt').forEach(function(o){ o.setAttribute('aria-checked', 'false'); });
-        }
-      }
       // En los pasos de una sola pregunta, avanzar solo
-      if (campo === 'genero' || campo === 'grabacion') setTimeout(function(){ mostrar(paso + 1); }, 220);
+      if (campo === 'genero' || campo === 'grabacion' || campo === 'plataformas') setTimeout(function(){ mostrar(paso + 1); }, 220);
     });
   });
 
