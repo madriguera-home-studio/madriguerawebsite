@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .mhs__head { max-width: 860px; margin: 0 auto; padding: 40px 16px 0; text-align: center; }
   .mhs .mhs__ok { margin: 0 0 12px; font-weight: 800; font-size: clamp(16px, 4.2vw, 20px); color: #F2B705; }
   .mhs h1 { margin: 0 auto 28px; max-width: 720px; font-weight: 900; font-size: clamp(32px, 8.5vw, 56px); line-height: 1.05; letter-spacing: -0.03em; color: #FFFFFF; }
-  .mhs video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); }
+  .mhs__video { width: 100%; overflow: hidden; display: block; background: #000; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); }
 
   .mhs__body { max-width: 640px; margin: 0 auto; padding: 36px 20px 80px; }
   .mhs p { margin: 0 0 22px; }
@@ -44,28 +44,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (min-width: 768px) {
     .mhs { font-size: 19px; }
     .mhs__head { padding-top: 64px; }
-    .mhs video { border-radius: 14px; }
+    .mhs__video { border-radius: 14px; }
     .mhs__body { padding: 48px 20px 112px; text-align: center; }
   }
 </style>
 <meta name="robots" content="noindex">
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2556267281387929');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2556267281387929&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -78,10 +61,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="mhs__head">
       <p class="mhs__ok">¡Formulario enviado con éxito!</p>
       <h1>Mira este corto video antes de irte</h1>
-      <video controls playsinline preload="metadata"
-        poster="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/bz7yTTuRbWjqdUP7hjoT/media/transcoded_videos/9da91a390a8088c2.jpg">
-        <source src="https://assets.cdn.filesafe.space/bz7yTTuRbWjqdUP7hjoT/media/69b4d998277ba02c32e819de.mp4" type="video/mp4">
-      </video>
+      <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/r3c4p1q0b7.js" async type="module"></script><style>wistia-player[media-id='r3c4p1q0b7']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/r3c4p1q0b7/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+      <div class="mhs__video"><wistia-player media-id="r3c4p1q0b7" aspect="1.7777777777777777"></wistia-player></div>
   </section>
 
   <main class="mhs__body">
