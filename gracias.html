@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Te mezclo tu canción - Gracias</title>
+<title>Paso 2: mira el video y prepara tus tracks - Madriguera Home Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -22,30 +22,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       radial-gradient(circle at 12% 40%, rgba(242,183,5,.05), transparent 40%),
       radial-gradient(circle at 88% 85%, rgba(242,183,5,.04), transparent 45%),
       #0E0E10;
-    background-attachment: scroll;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
   }
   .mhs, .mhs * { box-sizing: border-box; }
   .mhs { min-height: 100vh; font-family: Inter, Arial, sans-serif; color: #ECECE8; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+  .mhs strong { font-weight: 800; color: #FFFFFF; }
+  .mhs p { margin: 0 0 18px; }
+  .mhs .dim { color: #C9C9CF; }
 
-  /* Marca, integrada en la página */
   .mhs__bar { padding: 28px 20px 0; text-align: center; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; color: #FFFFFF; }
   .mhs__bar span { color: #F2B705; }
+
   .mhs__head { max-width: 860px; margin: 0 auto; padding: 40px 16px 0; text-align: center; }
-  .mhs .mhs__ok { margin: 0 0 12px; font-weight: 800; font-size: clamp(16px, 4.2vw, 20px); color: #F2B705; }
-  .mhs h1 { margin: 0 auto 28px; max-width: 720px; font-weight: 900; font-size: clamp(32px, 8.5vw, 56px); line-height: 1.05; letter-spacing: -0.03em; color: #FFFFFF; }
+  .listo { display: inline-block; margin: 0 0 16px !important; font-weight: 800; font-size: 14px; letter-spacing: .06em; color: #3DDC84; }
+  .mhs h1 { margin: 0 auto 18px; max-width: 760px; font-weight: 900; font-size: clamp(34px, 9.5vw, 62px); line-height: 1.04; letter-spacing: -0.03em; color: #FFFFFF; }
+  .mhs h1 span { color: #F2B705; display: block; }
+  .sub { max-width: 620px; margin: 0 auto 30px !important; font-size: clamp(17px, 4.4vw, 20px); color: #C9C9CF; }
   .mhs__video { width: 100%; overflow: hidden; display: block; background: #000; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); }
 
-  .mhs__body { max-width: 640px; margin: 0 auto; padding: 36px 20px 80px; }
-  .mhs p { margin: 0 0 22px; }
-  .mhs strong { font-weight: 800; color: #FFFFFF; }
+  .mhs__body { max-width: 660px; margin: 0 auto; padding: 44px 20px 90px; }
+
+  .mhs h2 { font-weight: 900; font-size: clamp(24px, 6vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: #FFFFFF; margin: 52px 0 18px; }
+  .mhs h3 { font-weight: 800; font-size: 19px; line-height: 1.35; color: #FFFFFF; margin: 0 0 10px; }
+
+  .caja { background: #16161A; border: 1px solid #2B2B31; border-radius: 14px; padding: 20px 20px 4px; margin: 0 0 16px; }
+  .caja p, .caja li { color: #C9C9CF; }
+  .caja ul { margin: 0 0 18px; padding-left: 20px; }
+  .caja li { margin-bottom: 6px; }
+  .caja.oro { border-left: 4px solid #F2B705; }
+
+  ol.pasos { list-style: none; counter-reset: n; padding: 0; margin: 0 0 8px; }
+  ol.pasos li { counter-increment: n; position: relative; padding: 0 0 18px 46px; color: #C9C9CF; }
+  ol.pasos li::before { content: counter(n); position: absolute; left: 0; top: 1px; width: 30px; height: 30px; border-radius: 50%; background: #2B2B31; color: #FFFFFF; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  ol.pasos li.ahora::before { background: #F2B705; color: #141414; }
+
+  .num { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #F2B705; margin-bottom: 6px; }
+
+  details { background: #16161A; border: 1px solid #2B2B31; border-radius: 14px; margin: 0 0 10px; padding: 0 20px; }
+  details summary { cursor: pointer; list-style: none; position: relative; font-weight: 800; color: #FFFFFF; padding: 16px 30px 16px 0; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; position: absolute; right: 0; top: 12px; color: #F2B705; font-size: 24px; font-weight: 700; }
+  details[open] summary::after { content: "\2212"; }
+  details .dentro { padding: 0 0 6px; color: #C9C9CF; font-size: 17px; }
+  details .dentro p, details .dentro li { color: #C9C9CF; }
+  details ol { padding-left: 20px; margin: 0 0 16px; }
+  details li { margin-bottom: 6px; }
+  details.ojo { border-color: #F2B705; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 800; color: #141414; background: #F2B705; border-radius: 999px; padding: 2px 8px; margin-left: 6px; vertical-align: 2px; }
+
+  .firma { margin-top: 48px; text-align: center; }
+  .firma p { color: #C9C9CF; }
 
   @media (min-width: 768px) {
     .mhs { font-size: 19px; }
     .mhs__head { padding-top: 64px; }
     .mhs__video { border-radius: 14px; }
-    .mhs__body { padding: 48px 20px 112px; text-align: center; }
+    .mhs__body { padding: 56px 20px 112px; }
+    .caja { padding: 24px 26px 8px; }
+    details { padding: 0 26px; }
   }
 </style>
 <meta name="robots" content="noindex">
@@ -59,14 +94,164 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="mhs__bar">MADRIGUERA <span>HOME STUDIO</span></header>
 
   <section class="mhs__head">
-      <p class="mhs__ok">¡Formulario enviado con éxito!</p>
-      <h1>Mira este corto video antes de irte</h1>
-      <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/r3c4p1q0b7.js" async type="module"></script><style>wistia-player[media-id='r3c4p1q0b7']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/r3c4p1q0b7/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
-      <div class="mhs__video"><wistia-player media-id="r3c4p1q0b7" aspect="1.7777777777777777"></wistia-player></div>
+    <p class="listo">✓ PASO 1 COMPLETADO</p>
+    <h1>Paso #2: mira este video <span>y prepara tus tracks</span></h1>
+    <p class="sub"><strong>¡Felicidades, pasaste el primer filtro!</strong> Te vamos a escribir por WhatsApp en máximo 24 horas. Cuando platiquemos te vamos a pedir tus tracks, así que mira el video y ve preparándolos desde hoy para tenerlos listos.</p>
+    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/r3c4p1q0b7.js" async type="module"></script><style>wistia-player[media-id='r3c4p1q0b7']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/r3c4p1q0b7/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+    <div class="mhs__video"><wistia-player media-id="r3c4p1q0b7" aspect="1.7777777777777777"></wistia-player></div>
   </section>
 
   <main class="mhs__body">
-    <p>Ey!, aquí Miguel de nuevo. Muchas gracias por enviar tu formulario, de verdad significa un montón para mí y <strong>haré todo lo posible para contactarte por WhatsApp en máximo 24 horas</strong> para poder empezar a trabajar en tu rola. Platicamos pronto.</p>
+    <p><strong>¡Ey! Aquí Miguel de nuevo.</strong></p>
+    <p>Antes que nada, gracias por animarte a mandar tu rola. 🙏</p>
+    <p>La neta, la confianza que nos das al mandarla es inmensa… se la estás mandando a alguien que no conoces, que nunca has visto, casi como a una caja negra a ver qué sale. Así que de verdad gracias por esa valentía, y si tu rola queda, te aseguro que no te vas a arrepentir.</p>
+
+    <div class="caja oro">
+      <p><strong>¿Por qué te pido que prepares tus tracks desde hoy?</strong></p>
+      <p>Para que, cuando te los pidamos, podamos llevar el proceso más rápido.</p>
+      <p>Me ha pasado un montón que le digo a alguien "oye, tu rola sí se puede trabajar, está chida, mándame tus tracks"… y ahí es donde se le va el tiempo. A veces no saben cómo exportarlos, o trabajaron con un estudio o productor que tiene los audios originales y tarda días en pasárselos.</p>
+      <p>Y eso ha hecho que proyectos buenos se queden fuera por no entregar su tracking a tiempo. Como solo voy a seleccionar 4 proyectos, le doy prioridad a quien tiene el compromiso y sus tracks listos. 😉</p>
+    </div>
+
+    <h2>¿Qué sigue después de mandar tu formulario?</h2>
+    <ol class="pasos">
+      <li><strong>Escuchamos tu canción</strong> para asegurarnos de que sí podemos ayudarte.</li>
+      <li><strong>Te escribimos por WhatsApp</strong> para platicar y ver si sigues interesad@.</li>
+      <li class="ahora"><strong>Ahí te pedimos tus tracks.</strong> Por eso conviene que ya los tengas listos.</li>
+      <li><strong>Hacemos una revisión técnica:</strong> metemos tus audios al programa y los escuchamos uno por uno para asegurarnos de que no estén cortados ni distorsionados y que suenen como deben. A veces los archivos parecen estar bien, pero al escucharlos algo no cuadra.</li>
+      <li><strong>Si algo viene mal, te avisamos.</strong> Si lo puedes volver a grabar, súper. Si no, no pasa nada: te explicamos qué limitaciones va a tener trabajar con ese audio y, con tu visto bueno, le seguimos.</li>
+      <li><strong>Apartas tu lugar</strong> y arrancamos con tu rola.</li>
+    </ol>
+
+    <h2>¿No quieres ver el video? Aquí va todo por escrito</h2>
+    <p class="dim">Exportar tus tracks significa tener todos los audios de tu canción listos en una carpeta, para mandármelos por Google Drive o WeTransfer. Así es como deben venir:</p>
+
+    <div class="caja">
+      <span class="num">Punto 1</span>
+      <h3>Cada cosa en su lugar (todo separado)</h3>
+      <p>Cada voz e instrumento tiene que venir en su propio audio. Por ejemplo:</p>
+      <ul>
+        <li>Si tu canción tiene 3 voces (la principal y 2 armonías), son 3 audios.</li>
+        <li>La guitarra en un audio, el bajo en otro, los teclados en otro.</li>
+        <li><strong>Batería grabada en vivo:</strong> cada pieza por separado (kick, tarola, toms, ride, overheads, room, etc).</li>
+        <li><strong>Batería digital:</strong> lo ideal es que también venga separada (si la hiciste en MIDI, se puede). Pero si te encanta como suena y solo la puedes exportar completa, todo cool, mándala así.</li>
+        <li><strong>Música urbana con beat:</strong> un audio para el beat y otro para cada voz.</li>
+      </ul>
+    </div>
+
+    <div class="caja">
+      <span class="num">Punto 2</span>
+      <h3>En crudo: sin EQ, sin compresor, sin reverb</h3>
+      <p>Una de las preguntas que más me hacen es "¿con efectos o sin efectos?". Para trabajar tu canción al 100%, la necesito <strong>sin procesamiento</strong>: tu voz tal cual salió del micrófono, la guitarra tal cual se grabó.</p>
+      <p><strong>Ojo, aquí va la excepción:</strong> los efectos que son <strong>parte del sonido</strong> sí se quedan. Por ejemplo:</p>
+      <ul>
+        <li>Grabaste una guitarra limpia y en la compu le metiste una distorsión que dices "uf, esto me encanta"… esa se la dejas.</li>
+        <li>Le pusiste al bajo un chorus o un delay porque así te gusta como suena… también.</li>
+        <li>Usas autotune en la voz porque te da el carácter que buscas… se lo dejas.</li>
+      </ul>
+      <p>¿Por qué? Porque si me los mandas sin ese efecto, me toca adivinar el sonido que tenías en la cabeza, y nos la pasamos en el "así no me gusta, bájale, súbele, ponle menos"… 😅</p>
+      <p>Y si quieres, también puedes mandarme el efecto por separado (por ejemplo, la voz limpia y en otro audio el reverb que te gusta) para que yo juegue con eso.</p>
+    </div>
+
+    <div class="caja">
+      <span class="num">Punto 3</span>
+      <h3>Todos del mismo largo</h3>
+      <p>Aquí es donde más se equivocan. Todos los audios tienen que <strong>empezar en el mismo punto y terminar en el mismo punto</strong> (donde empieza y termina la canción), aunque el instrumento entre hasta la mitad.</p>
+      <p>Si me mandas una parte recortada, ya no sé dónde va, y toda la canción se mueve. Por eso al exportar hay que elegir la duración del <strong>proyecto entero</strong>.</p>
+    </div>
+
+    <div class="caja">
+      <span class="num">Punto 4</span>
+      <h3>Con nombres claros</h3>
+      <p>Hay gente que les pone "Sonido 1", "Sonido 2"… y así no se sabe qué es cada cosa. Ponle el nombre de lo que hay adentro: "Voz principal", "Armonía 1", "Guitarra eléctrica", "Bajo", "Kick".</p>
+    </div>
+
+    <div class="caja">
+      <span class="num">Punto 5</span>
+      <h3>En WAV de 24 bits</h3>
+      <p>Ese es el formato que buscamos recibir. Si me dices "Miguel, solo tengo los MP3 y ya no puedo conseguir la sesión", no pasa nada, mándalos así. Pero si se puede en WAV, mucho mejor.</p>
+    </div>
+
+    <div class="caja oro">
+      <p><strong>Un último favor antes de mandarlos</strong></p>
+      <p>Abre una sesión nueva, mete todos tus audios ya exportados y dale play una vez. Así te aseguras de que todos son del mismo largo, tienen el nombre correcto y suenan como deben. Esto nos ayuda un montón a hacer todo más rápido.</p>
+    </div>
+
+    <h2>¿Cómo los exporto?</h2>
+    <p class="dim">Depende del programa que uses. Toca el tuyo:</p>
+
+    <details class="ojo">
+      <summary>GarageBand <span class="tag">Ojo</span></summary>
+      <div class="dentro">
+        <p>Esto es importante: GarageBand <strong>no puede exportar todos los tracks del proyecto de una sola vez</strong> como Reaper, Logic o Pro Tools. Hay que sacar <strong>track por track</strong>:</p>
+        <ol>
+          <li>Activa el ciclo desde el inicio hasta el final de la canción, para que todos salgan del mismo largo.</li>
+          <li>Deja sonando solo un track (botón de solo).</li>
+          <li>Ve a <strong>Compartir &gt; Exportar canción al disco</strong>, elige WAV y ponle el nombre de ese track.</li>
+          <li>Repite con cada uno de tus tracks hasta tenerlos todos en la misma carpeta.</li>
+        </ol>
+        <p>Toma más tiempo que en otros programas, por eso te recomiendo empezar desde hoy.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Reaper</summary>
+      <div class="dentro">
+        <ol>
+          <li>Selecciona todos los tracks.</li>
+          <li>Ve a <strong>Archivo &gt; Renderizar</strong>.</li>
+          <li>En <strong>Fuente</strong> elige <strong>Selected tracks (stems)</strong> y en el rango elige <strong>Proyecto entero</strong> (eso hace que todos salgan del largo de la canción).</li>
+          <li>Formato WAV de 24 bits, elige la carpeta donde se van a guardar y dale renderizar.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>Logic, Pro Tools, Ableton u otro</summary>
+      <div class="dentro">
+        <p>Casi todos tienen una opción para exportar todos los tracks de una vez (en Logic, por ejemplo: <strong>Archivo &gt; Exportar &gt; Todas las pistas como archivos de audio</strong>). Lo importante es que salga cada track por separado, en WAV y con la duración de la canción completa.</p>
+        <p>Si no le encuentras, dinos cuando platiquemos por WhatsApp y vemos cómo ayudarte.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Me grabó un estudio o un productor</summary>
+      <div class="dentro">
+        <p>Entonces hay que pedírselos. Diles tal cual:</p>
+        <p><strong>"Necesito los tracks que usaron para la canción, por separado, sin efectos ni procesamiento, en WAV."</strong></p>
+        <p>Muchos estudios cobran un extra por mandarte los audios y a veces tardan unos días… así funciona ese mundo. Por eso pídelos desde hoy.</p>
+      </div>
+    </details>
+
+    <h2>¿Cómo los mando cuando me los pidan?</h2>
+
+    <div class="caja">
+      <span class="num">Opción 1</span>
+      <h3>Google Drive (el que más te recomiendo)</h3>
+      <ul>
+        <li>Crea una carpeta con tu nombre y el de la canción, y sube ahí todos tus audios.</li>
+        <li>Dale <strong>Compartir</strong> y en <strong>Acceso general</strong> cambia a <strong>"Cualquier persona que tenga el vínculo"</strong>.</li>
+        <li>Copia el link y guárdalo.</li>
+      </ul>
+      <p>Ojo con el acceso: a veces la gente nada más le da "compartir" y cuando nos llega el link dice "no tienes acceso"… y hay que pedírtelo de nuevo.</p>
+    </div>
+
+    <div class="caja">
+      <span class="num">Opción 2</span>
+      <h3>WeTransfer (súper sencillo)</h3>
+      <ul>
+        <li>Sube tus audios.</li>
+        <li>En el título pon tu nombre y el de la canción.</li>
+        <li>Genera el link.</li>
+      </ul>
+      <p>Ojo: esos links duran solo unos días y luego se borran, así que mejor genéralo cuando te lo pidamos.</p>
+    </div>
+
+    <div class="firma">
+      <p>Y si viste el video o leíste todo esto y dices "Miguel, la neta no entendí nada"… no pasa nada, dímelo cuando platiquemos y buscamos cómo ayudarte. 😀</p>
+      <p>Gracias de nuevo por la oportunidad de escuchar tu canción. Te mando un abrazo y platicamos pronto por WhatsApp. 🤘</p>
+      <p><strong>Miguel</strong></p>
+    </div>
   </main>
 </div>
 </body>
