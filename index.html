@@ -63,59 +63,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom:18px;
   }
 
+  /* BARRA DE ARRIBA */
+  .topbar{position:sticky;top:0;z-index:60;background:rgba(14,14,16,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+  .topbar-in{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--text)}
+  .topbar-der{display:flex;align-items:center;gap:14px}
+  .lugares{font-size:14px;color:var(--text-dim)}
+  .lugares strong{color:var(--gold)}
+  .btn-chico{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;background:var(--gold);color:#111;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;text-decoration:none}
+
   /* HERO */
   .hero{
-    background:
-      radial-gradient(ellipse at top, rgba(242,183,5,.12), transparent 55%),
-      var(--bg);
-    padding:72px 0 56px;
+    background:radial-gradient(ellipse at top, rgba(242,183,5,.10), transparent 55%), var(--bg);
     border-bottom:1px solid var(--border);
-    overflow:hidden;
   }
-  .hero .wrap{max-width:var(--max-wide)}
-  .hero-inner{display:flex;align-items:center;gap:64px}
-  .hero-copy{flex:1 1 520px;min-width:280px}
-  .hero-visual{
-    flex:1 1 320px;min-width:240px;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;
-  }
-  .eq-glow{
-    position:absolute;width:340px;height:340px;border-radius:50%;
-    background:radial-gradient(circle, rgba(242,183,5,.16), transparent 70%);
-    filter:blur(6px);
-  }
-  .eq{position:relative;z-index:1}
-  .eq .bar{transform-box:fill-box;transform-origin:center bottom;animation:eqPulse 1.6s ease-in-out infinite}
-  .eq .bar:nth-child(1){animation-delay:-1.2s}
-  .eq .bar:nth-child(2){animation-delay:-0.9s}
-  .eq .bar:nth-child(3){animation-delay:-0.6s}
-  .eq .bar:nth-child(4){animation-delay:-1.4s}
-  .eq .bar:nth-child(5){animation-delay:-0.3s}
-  .eq .bar:nth-child(6){animation-delay:-1.0s}
-  @keyframes eqPulse{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
-  @media (prefers-reduced-motion:reduce){.eq .bar{animation:none}}
-  .hero h1{font-size:clamp(1.7rem,3.4vw,2.7rem);font-weight:800}
+  .hero-grid{max-width:1120px;margin:0 auto;padding:64px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center}
+  .hero-copy{display:flex;flex-direction:column;gap:20px;max-width:780px}
+  .player[hidden]{display:none}
+  .pill{align-self:flex-start;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);line-height:1.5}
+  .hero h1{margin:0;font-weight:800;font-size:clamp(32px,4.6vw,54px);line-height:1.1;letter-spacing:-.02em}
   .hero h1 span{color:var(--gold)}
-  .hero-sub{font-size:1.15rem;color:var(--text-dim)}
-  .price-badge{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-left:4px solid var(--gold);
-    border-radius:var(--radius);
-    padding:18px 20px;
-    margin:26px 0 8px;
-    font-size:1.05rem;
-    color:var(--text-dim);
-  }
-  .slots{
-    font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;
-    color:var(--bg);background:var(--text);display:inline-block;
-    padding:6px 14px;border-radius:999px;margin-top:16px;
-  }
-  @media (max-width:880px){
-    .hero-inner{flex-direction:column;gap:8px}
-    .hero-visual{display:none}
+  .hero-sub{margin:0;font-size:19px;color:var(--text-dim)}
+  .precio{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:var(--card)}
+  .precio-num{display:flex;align-items:baseline;gap:10px}
+  .precio-num s{font-size:17px;color:#8f8f8a}
+  .precio-num b{font-family:'Montserrat',sans-serif;font-weight:800;font-size:30px;color:var(--text)}
+  .precio-num small{font-size:14px;color:#a6a6a0}
+  .precio-txt{flex:1 1 200px;font-size:15px;line-height:1.5;color:var(--text-dim)}
+  .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .btn-grande{display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 28px;border-radius:12px;background:var(--gold);color:#111;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;text-decoration:none;box-shadow:0 6px 22px rgba(242,183,5,.22);transition:transform .15s ease}
+  .btn-grande:hover{transform:translateY(-2px)}
+  .link-suave{font-size:15px;color:var(--text-dim)}
+
+  /* Reproductor antes / despues */
+  .player{border:1px solid var(--border);border-radius:20px;background:var(--card);padding:24px;display:flex;flex-direction:column;gap:18px}
+  .player-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .player-top span{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px}
+  .toggle{display:flex;padding:4px;border-radius:10px;background:var(--bg);border:1px solid var(--border)}
+  .toggle button{min-height:40px;padding:0 16px;border-radius:8px;border:0;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;background:transparent;color:var(--text-dim)}
+  .toggle button[aria-pressed="true"]{background:var(--gold);color:#111}
+  .onda{height:110px;display:flex;align-items:center;gap:4px}
+  .onda i{flex:1 1 0;border-radius:3px;background:#4a4a50;transition:background .2s}
+  .onda i.ya{background:var(--gold)}
+  .player.antes .onda i.ya{background:#b3b3bb}
+  .player-abajo{display:flex;align-items:center;gap:14px}
+  .play{width:52px;height:52px;border-radius:50%;border:0;background:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto}
+  .play:disabled{opacity:.4;cursor:not-allowed}
+  .play svg{width:20px;height:20px}
+  .rola{display:flex;flex-direction:column;min-width:0;line-height:1.4}
+  .rola b{font-size:16px}
+  .rola span{font-size:14px;color:#a6a6a0}
+  @media (max-width:640px){
+    .topbar-in{padding:10px 16px}
+    .hero-grid{padding:36px 16px 40px;gap:32px}
+    .hero-sub{font-size:17px}
+    .btn-grande{width:100%;justify-content:center}
+    .player{padding:18px}
+    .onda{height:80px}
   }
 
   /* CTA button */
@@ -269,11 +273,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     body{padding-bottom:82px;font-size:18px}
     .wrap{padding:0 16px}
     section{padding:36px 0}
-    .hero{padding:40px 0 28px}
-    .hero h1{font-size:1.65rem}
-    .hero-sub{font-size:1.1rem}
-    .eyebrow{font-size:.75rem;padding:6px 13px}
-    .price-badge{padding:16px;font-size:1rem}
     .sec-title{font-size:1.4rem}
     .cta-btn{width:100%;text-align:center;padding:17px 20px;font-size:1.1rem}
     .audio-card{padding:16px}
@@ -290,36 +289,116 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="marca">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 14v4M8 10v8M12 6v12M16 11v7M20 9v9"/></svg>
+      <span>Madriguera Home Studio</span>
+    </div>
+    <div class="topbar-der">
+      <span class="lugares">Solo <strong>4</strong> lugares</span>
+      <a class="btn-chico" href="aplicar">Aplicar ahora</a>
+    </div>
+  </div>
+</div>
+
 <header class="hero">
-  <div class="wrap">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow">¡Por favor, lee cuidadosamente la información antes de aplicar!</span>
-        <h1>Importante: en esta ronda solo voy a seleccionar 4 proyectos para mezclar por <span>$500 pesos</span></h1>
-        <p class="hero-sub">Revisaré las aplicaciones en el orden en que lleguen, así que mientras antes mandes tu demo, más posibilidades tienes de quedar seleccionado.</p>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="pill">Por favor, lee con calma antes de aplicar</span>
+      <h1>En esta ronda solo voy a seleccionar 4 proyectos para mezclar por <span>$500 pesos</span></h1>
+      <p class="hero-sub">Revisaré las aplicaciones en el orden en que lleguen, así que mientras antes mandes tu demo, más posibilidades tienes de quedar seleccionad@.</p>
+      <div class="precio">
+        <div class="precio-num"><s>$1,000</s><b>$500</b><small>MXN</small></div>
+        <span class="precio-txt">Mezcla y masterización. $250 para apartar, los otros $250 solo si te gustó el resultado.</span>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn-grande" href="aplicar">Aplicar con mi demo
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="link-suave" href="#proceso">o lee primero cómo funciona</a>
+      </div>
+    </div>
 
-        <span class="slots">🎧 Solo 4 lugares disponibles este mes</span>
-
-        <div class="cta-wrap" style="text-align:left;margin-top:28px">
-          <a class="cta-btn" href="aplicar">Aplicar ahora →</a>
-          <p class="cta-note">Entre antes mandes tu demo, más posibilidades tienes de quedar seleccionad@.</p>
+    <!-- Reproductor antes / despues: escondido por ahora. Para mostrarlo, quita "hidden" y pon los audios en AUDIO_ANTES / AUDIO_DESPUES -->
+    <div class="player" id="player" hidden>
+      <div class="player-top">
+        <span>Escucha la diferencia</span>
+        <div class="toggle" role="group" aria-label="Comparar versión">
+          <button type="button" data-v="antes" aria-pressed="false">Antes</button>
+          <button type="button" data-v="despues" aria-pressed="true">Después</button>
         </div>
       </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="eq-glow"></div>
-        <svg class="eq" width="240" height="200" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
-          <rect class="bar" x="8"   y="130" width="28" height="60"  rx="14" fill="#caa23f"/>
-          <rect class="bar" x="46"  y="60"  width="28" height="130" rx="14" fill="#f2b705"/>
-          <rect class="bar" x="84"  y="145" width="28" height="45"  rx="14" fill="#caa23f"/>
-          <rect class="bar" x="122" y="30"  width="28" height="160" rx="14" fill="#f2b705"/>
-          <rect class="bar" x="160" y="105" width="28" height="85"  rx="14" fill="#caa23f"/>
-          <rect class="bar" x="198" y="80"  width="28" height="110" rx="14" fill="#f2b705"/>
-        </svg>
+      <div class="onda" id="onda" aria-hidden="true"></div>
+      <div class="player-abajo">
+        <button class="play" id="playBtn" type="button" aria-label="Reproducir">
+          <svg viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path id="playIcon" d="M7 4.5v15l13-7.5z"/></svg>
+        </button>
+        <div class="rola">
+          <b id="rolaNombre">[Nombre de la rola] · [Artista]</b>
+          <span id="rolaEstado">Después: mezcla y master final</span>
+        </div>
       </div>
     </div>
   </div>
 </header>
+
+<script>
+(function(){
+  // ---- Audios del antes y despues (misma canción) ----
+  var AUDIO_ANTES = '';
+  var AUDIO_DESPUES = '';
+  // ----------------------------------------------------
+  var alturas = [35,76,79,49,43,36,47,36,69,85,58,59,80,61,36,38,48,47,55,85,76,38,73,70,43,38,46,55,38,76,87,55,59,73,53,36];
+  var onda = document.getElementById('onda');
+  var barras = alturas.map(function(h){ var i = document.createElement('i'); i.style.height = h + '%'; onda.appendChild(i); return i; });
+  var player = document.getElementById('player');
+  var btn = document.getElementById('playBtn');
+  var icono = document.getElementById('playIcon');
+  var estado = document.getElementById('rolaEstado');
+  var botones = player.querySelectorAll('.toggle button');
+  var version = 'despues';
+  var audios = { antes: new Audio(), despues: new Audio() };
+  audios.antes.preload = audios.despues.preload = 'none';
+  if (AUDIO_ANTES) audios.antes.src = AUDIO_ANTES;
+  if (AUDIO_DESPUES) audios.despues.src = AUDIO_DESPUES;
+  if (!AUDIO_ANTES || !AUDIO_DESPUES) btn.disabled = true;
+  var PLAY = 'M7 4.5v15l13-7.5z', PAUSA = 'M6 4h4v16H6zM14 4h4v16h-4z';
+
+  function pintar(){
+    var a = audios[version];
+    var p = a.duration ? a.currentTime / a.duration : 0;
+    barras.forEach(function(b, i){ b.classList.toggle('ya', (i + 1) / barras.length <= p || (p === 0 && !a.paused)); });
+  }
+  function actual(){ return audios[version]; }
+  function cambiar(v){
+    if (v === version) return;
+    var antes = actual(), sonaba = !antes.paused, t = antes.currentTime;
+    antes.pause();
+    version = v;
+    player.classList.toggle('antes', v === 'antes');
+    botones.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.v === v ? 'true' : 'false'); });
+    estado.textContent = v === 'antes' ? 'Antes: grabación original' : 'Después: mezcla y master final';
+    var a = actual();
+    try { a.currentTime = t; } catch (e) {}
+    if (sonaba) a.play();
+    pintar();
+  }
+  botones.forEach(function(b){ b.addEventListener('click', function(){ cambiar(b.dataset.v); }); });
+  btn.addEventListener('click', function(){
+    var a = actual();
+    if (a.paused) { a.play(); } else { a.pause(); }
+  });
+  ['antes','despues'].forEach(function(k){
+    var a = audios[k];
+    a.addEventListener('play', function(){ icono.setAttribute('d', PAUSA); btn.setAttribute('aria-label', 'Pausar'); });
+    a.addEventListener('pause', function(){ icono.setAttribute('d', PLAY); btn.setAttribute('aria-label', 'Reproducir'); });
+    a.addEventListener('timeupdate', function(){ if (k === version) pintar(); });
+    a.addEventListener('ended', function(){ a.currentTime = 0; pintar(); });
+  });
+  barras.forEach(function(b){ b.classList.add('ya'); });
+})();
+</script>
 
 <section>
   <div class="wrap">
