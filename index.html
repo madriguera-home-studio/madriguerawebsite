@@ -83,8 +83,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       var(--bg);
   }
   body{background:var(--bg)}
-  .hero{background:transparent;border-bottom:1px solid var(--border)}
-  .alt{background:rgba(22,22,26,.55) !important}
+  .hero{background:transparent}
   .hero-grid{max-width:1120px;margin:0 auto;padding:64px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center}
   .hero-copy{display:flex;flex-direction:column;gap:20px;max-width:780px}
   .player[hidden]{display:none}
@@ -149,8 +148,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .sec-title.no{color:var(--green-no)}
   .sec-title.yes{color:var(--green-yes)}
 
-  /* alt bg */
-  .alt{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  /* Un solo fondo para toda la pagina. Solo los ejemplos de canciones llevan panel oscuro para resaltar los reproductores */
+  .ejemplos{background:rgba(22,22,26,.6);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .ejemplos + .ejemplos{border-top:0;padding-top:8px}
 
   ul.bullets{list-style:none;padding:0;margin:0 0 24px}
   ul.bullets li{
@@ -435,7 +435,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="alt">
+<section class="ejemplos">
   <div class="wrap">
     <h2 class="sec-title no">🚫 Para quien no es esto</h2>
     <ul class="bullets no">
@@ -465,7 +465,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section>
+<section class="ejemplos">
   <div class="wrap">
     <h2 class="sec-title yes">✅ Para quien sí es esto</h2>
     <ul class="bullets yes">
@@ -519,7 +519,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <h2 class="sec-title">¿Sobre mí y mi trabajo?</h2>
     <p>Soy ingeniero en mezcla y llevo casi 3 años ayudando a artistas de mi ciudad a grabar y mezclar sus canciones.</p>
@@ -560,7 +560,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <h2 class="sec-title">🎧 Lo que dicen algunos artistas con los que ya he trabajado</h2>
     <p class="grid-hint">Desliza hacia la derecha para ver más. Toca cualquier captura para verla en grande.</p>
@@ -622,7 +622,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section id="empezar" style="border-top:1px solid var(--border)">
+<section id="empezar">
   <div class="wrap">
     <h2 class="sec-title">¿Cómo podemos empezar a trabajar juntos?</h2>
 
@@ -650,7 +650,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <h2 class="sec-title">Preguntas frecuentes</h2>
     <div class="faq">
