@@ -148,9 +148,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .sec-title.no{color:var(--green-no)}
   .sec-title.yes{color:var(--green-yes)}
 
-  /* Un solo fondo para toda la pagina. Solo los ejemplos de canciones llevan panel oscuro para resaltar los reproductores */
-  .ejemplos{background:rgba(22,22,26,.6);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  .ejemplos + .ejemplos{border-top:0;padding-top:8px}
+  /* Un solo fondo para toda la pagina, sin paneles ni divisores. Solo las tarjetas de los reproductores de ejemplo llevan fondo */
 
   ul.bullets{list-style:none;padding:0;margin:0 0 24px}
   ul.bullets li{
@@ -436,7 +434,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="ejemplos">
+<section>
   <div class="wrap">
     <h2 class="sec-title no">🚫 Para quien no es esto</h2>
     <ul class="bullets no">
@@ -466,7 +464,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="ejemplos">
+<section>
   <div class="wrap">
     <h2 class="sec-title yes">✅ Para quien sí es esto</h2>
     <ul class="bullets yes">
