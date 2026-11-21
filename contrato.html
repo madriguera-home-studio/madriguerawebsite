@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Sin Google Tag Manager a proposito: el link del contrato es privado y no debe mandarse a Google ni a Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrato - Madriguera Home Studio</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@400;700&display=swap">
+<style>
+  :root{
+    --bg:#0e0e10; --card:#1c1c21; --border:#2b2b31; --border-2:#3a3a42;
+    --text:#f2f2f0; --text-dim:#b3b3bb; --gold:#f2b705; --red:#ff5c5c; --green:#3ddc84;
+    --radius:14px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; color:var(--text); font-family:'Lato',Arial,sans-serif; font-size:17px; line-height:1.6;
+    background:radial-gradient(ellipse at top, rgba(242,183,5,.10), transparent 55%), var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:680px;margin:0 auto;padding:32px 16px 56px}
+  .top{text-align:center;margin-bottom:22px}
+  .marca{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.45rem;line-height:1.25;margin:0}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 22px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .texto{white-space:pre-line;font-size:1rem;color:var(--text)}
+  .firmar{margin-top:22px;display:flex;flex-direction:column;gap:16px}
+  label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+  input[type=text]{
+    width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid var(--border-2);
+    background:#141418;color:var(--text);font-size:17px;font-family:inherit;
+  }
+  input[type=text]:focus{outline:2px solid var(--gold);outline-offset:1px}
+  .pad-wrap{position:relative}
+  canvas{display:block;width:100%;height:190px;background:#fff;border-radius:12px;touch-action:none;cursor:crosshair}
+  .pad-hint{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;color:#9a9aa2;pointer-events:none;font-size:.95rem}
+  .pad-acciones{display:flex;justify-content:flex-end;margin-top:6px}
+  .link-btn{background:none;border:0;color:var(--text-dim);font-size:.9rem;cursor:pointer;text-decoration:underline;padding:4px}
+  .acepto{display:flex;gap:12px;align-items:flex-start;font-family:'Lato',sans-serif;font-weight:400;font-size:.98rem;cursor:pointer}
+  .acepto input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--gold);flex:0 0 auto}
+  .btn{
+    min-height:56px;border:0;border-radius:12px;background:var(--gold);color:#111;font-family:'Montserrat',sans-serif;
+    font-weight:800;font-size:1.05rem;cursor:pointer;width:100%;
+  }
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .btn-sec{background:transparent;color:var(--text);border:1px solid var(--border-2)}
+  .error{color:var(--red);font-size:.95rem;margin:0}
+  .estado{text-align:center;padding:28px 10px;color:var(--text-dim)}
+  .firmado{margin-top:22px;border-top:1px solid var(--border);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+  .firmado .ok{color:var(--green);font-family:'Montserrat',sans-serif;font-weight:700}
+  .firmado img{width:260px;max-width:100%;background:#fff;border-radius:10px;padding:6px}
+  .pie{text-align:center;color:var(--text-dim);font-size:.85rem;margin-top:18px}
+  @media print{
+    body{background:#fff;color:#111}
+    .card{box-shadow:none;border:0;background:#fff;color:#111;padding:0}
+    .texto{color:#111}
+    .no-print{display:none !important}
+    .marca{color:#111}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="top">
+    <div class="marca">Madriguera Home Studio</div>
+    <h1 id="titulo">Contrato</h1>
+  </div>
+
+  <div class="card" id="card">
+    <div class="estado" id="estado">Cargando el contrato...</div>
+  </div>
+  <p class="pie no-print" id="pie">Si tienes dudas sobre el contrato, escríbeme por WhatsApp antes de firmar.</p>
+</main>
+
+<script>
+(function(){
+  var SUPABASE_URL = 'https://ymwbrcaplcsvcqmmqzqq.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_DiMV6uByUyxXGjvJsy24gg_IzyeIhpZ';
+  var card = document.getElementById('card');
+  var token = new URLSearchParams(location.search).get('t') || '';
+
+  function rpc(fn, body){
+    return fetch(SUPABASE_URL + '/rest/v1/rpc/' + fn, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY },
+      body: JSON.stringify(body)
+    }).then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error((j && j.message) || 'Error'); return j; }); });
+  }
+  function esc(t){ var d = document.createElement('div'); d.textContent = t == null ? '' : t; return d.innerHTML; }
+  function fecha(iso){
+    var d = new Date(iso);
+    return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' }) + ' a las ' +
+      d.toLocaleTimeString('es-MX', { hour: 'numeric', minute: '2-digit' });
+  }
+  function mensaje(t){ card.innerHTML = '<div class="estado">' + esc(t) + '</div>'; }
+
+  if (!/^[0-9a-f-]{36}$/i.test(token)) { mensaje('Este link no es válido. Pídele a Miguel que te lo vuelva a mandar.'); return; }
+
+  function cargar(){
+    rpc('ver_contrato', { p_token: token }).then(function(filas){
+      var c = filas && filas[0];
+      if (!c) { mensaje('Este contrato no existe o ya no está disponible. Pídele a Miguel que te lo vuelva a mandar.'); return; }
+      document.getElementById('titulo').textContent = c.titulo;
+      document.title = c.titulo + ' - Madriguera Home Studio';
+      if (c.estado === 'Firmado') pintarFirmado(c); else pintarParaFirmar(c);
+    }).catch(function(){ mensaje('No se pudo cargar el contrato. Revisa tu conexión y vuelve a abrir el link.'); });
+  }
+
+  function pintarFirmado(c){
+    document.getElementById('pie').hidden = true;
+    card.innerHTML =
+      '<div class="texto">' + esc(c.texto) + '</div>' +
+      '<div class="firmado">' +
+        '<div class="ok">✓ Contrato firmado</div>' +
+        '<div>Firmado por <b>' + esc(c.firmado_nombre) + '</b> el ' + esc(fecha(c.firmado_en)) + '</div>' +
+        '<img alt="Firma" id="firma-img" hidden>' +
+        '<button type="button" class="btn btn-sec no-print" id="imprimir">Guardar una copia (PDF)</button>' +
+      '</div>';
+    if (c.firma && /^data:image\/png;base64,[A-Za-z0-9+\/=]+$/.test(c.firma)) {
+      var img = document.getElementById('firma-img'); img.src = c.firma; img.hidden = false;
+    }
+    document.getElementById('imprimir').onclick = function(){ window.print(); };
+  }
+
+  function pintarParaFirmar(c){
+    card.innerHTML =
+      '<div class="texto">' + esc(c.texto) + '</div>' +
+      '<form class="firmar" id="form" novalidate>' +
+        '<div><label for="nombre">Tu nombre completo</label>' +
+        '<input type="text" id="nombre" autocomplete="name" maxlength="120" placeholder="Nombre y apellido"></div>' +
+        '<div><label>Tu firma</label>' +
+          '<div class="pad-wrap"><canvas id="pad"></canvas><div class="pad-hint" id="hint">Firma aquí con tu dedo</div></div>' +
+          '<div class="pad-acciones"><button type="button" class="link-btn" id="borrar">Borrar firma</button></div></div>' +
+        '<label class="acepto"><input type="checkbox" id="acepto"><span>Leí y acepto las condiciones de este acuerdo.</span></label>' +
+        '<p class="error" id="error" hidden></p>' +
+        '<button type="submit" class="btn" id="enviar">Firmar contrato</button>' +
+      '</form>';
+
+    // ---- Firma con el dedo o el mouse ----
+    var canvas = document.getElementById('pad'), hint = document.getElementById('hint');
+    var ctx = canvas.getContext('2d'), dibujando = false, trazos = 0, ultimo = null;
+    function ajustar(){
+      var r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#111';
+      trazos = 0; hint.hidden = false;
+    }
+    ajustar();
+    function punto(e){ var r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+    canvas.addEventListener('pointerdown', function(e){
+      e.preventDefault(); canvas.setPointerCapture(e.pointerId); dibujando = true; ultimo = punto(e);
+      ctx.beginPath(); ctx.arc(ultimo.x, ultimo.y, 1.1, 0, Math.PI * 2); ctx.fillStyle = '#111'; ctx.fill();
+      trazos++; hint.hidden = true;
+    });
+    canvas.addEventListener('pointermove', function(e){
+      if (!dibujando) return;
+      var p = punto(e);
+      ctx.beginPath(); ctx.moveTo(ultimo.x, ultimo.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+      ultimo = p;
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(ev){ canvas.addEventListener(ev, function(){ dibujando = false; }); });
+    document.getElementById('borrar').onclick = function(){ ctx.clearRect(0, 0, canvas.width, canvas.height); trazos = 0; hint.hidden = false; };
+
+    // ---- Enviar ----
+    var form = document.getElementById('form'), err = document.getElementById('error'), btn = document.getElementById('enviar');
+    function fallo(t){ err.textContent = t; err.hidden = false; }
+    form.addEventListener('submit', function(e){
+      e.preventDefault(); err.hidden = true;
+      var nombre = document.getElementById('nombre').value.trim();
+      if (nombre.length < 3) return fallo('Escribe tu nombre completo.');
+      if (!trazos) return fallo('Falta tu firma en el recuadro blanco.');
+      if (!document.getElementById('acepto').checked) return fallo('Marca la casilla para aceptar las condiciones.');
+      btn.disabled = true; btn.textContent = 'Firmando...';
+      rpc('firmar_contrato', {
+        p_token: token, p_nombre: nombre, p_firma: canvas.toDataURL('image/png'), p_dispositivo: navigator.userAgent
+      }).then(function(){ window.scrollTo(0, 0); cargar(); })
+        .catch(function(x){ btn.disabled = false; btn.textContent = 'Firmar contrato'; fallo(x.message || 'No se pudo firmar. Vuelve a intentar.'); });
+    });
+  }
+
+  cargar();
+})();
+</script>
+</body>
+</html>
