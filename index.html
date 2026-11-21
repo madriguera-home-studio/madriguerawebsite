@@ -304,8 +304,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .sticky-cta a{display:block;text-align:center}
   @media (max-width:640px){
-    .sticky-cta{display:block}
-    body{padding-bottom:82px;font-size:18px}
+    /* Celular: sin boton fijo abajo; solo el "Aplicar ahora" del header, en un solo renglon compacto */
+    body{font-size:18px}
+    .topbar-in{display:grid;grid-template-columns:1fr auto;grid-template-areas:"marca btn";align-items:center;column-gap:12px;row-gap:0;padding:8px 16px}
+    .topbar-der{display:contents}
+    .marca{grid-area:marca;font-size:13px;gap:8px;white-space:nowrap;min-width:0}
+    .marca svg{width:16px;height:16px;flex:0 0 auto}
+    .lugares{display:none}
+    .btn-chico{grid-area:btn;min-height:38px;padding:0 14px;font-size:13px;white-space:nowrap}
+    /* Frase de arriba del hero: mas chica para que quepa en un renglon; si no cabe, se parte en dos partes parejas */
+    .pill{font-size:11px;letter-spacing:.06em;text-wrap:balance}
     .wrap{padding:0 16px}
     section{padding:36px 0}
     .sec-title{font-size:1.4rem}
