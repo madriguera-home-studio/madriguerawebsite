@@ -87,6 +87,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hero-grid{max-width:1120px;margin:0 auto;padding:64px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center}
   .hero-copy{display:flex;flex-direction:column;gap:20px;max-width:780px}
   .player[hidden]{display:none}
+  /* Hero centrado (mientras el reproductor antes/despues este escondido): una sola columna al centro */
+  .hero.centrado .hero-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .hero.centrado .hero-copy{align-items:center;max-width:960px;gap:24px}
+  .hero.centrado .hero-sub{max-width:720px}
+  .hero.centrado .pill{align-self:center}
+  .hero.centrado h1,.hero.centrado .hero-sub{text-wrap:balance}
+  .hero.centrado .precio{justify-content:center;text-align:left;max-width:560px}
+  .hero.centrado .hero-ctas{flex-direction:column;justify-content:center;gap:12px}
+  @media (max-width:640px){.hero.centrado .precio{text-align:center}}
   .pill{align-self:flex-start;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);line-height:1.5}
   .hero h1{margin:0;font-weight:800;font-size:clamp(32px,4.6vw,54px);line-height:1.1;letter-spacing:-.02em}
   .hero h1 span{color:var(--gold)}
@@ -327,7 +336,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<header class="hero">
+<header class="hero centrado">
   <div class="hero-grid">
     <div class="hero-copy">
       <span class="pill">Por favor, lee con calma antes de aplicar</span>
