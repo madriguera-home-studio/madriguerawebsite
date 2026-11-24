@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PNW7N7XT');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Así trabajamos tu canción - Madriguera Home Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Lato:wght@400;700&display=swap">
+<!--
+  Proceso de la cancion: go.madriguerahomestudio.com/proceso
+  Siempre marca "Tu estas aqui" en el paso 3 (mandar el tracking).
+-->
+<style>
+  :root{
+    --bg:#0e0e10; --card:#1c1c21; --border:#2b2b31; --line:#3a3a42;
+    --text:#f2f2f0; --dim:#b3b3bb; --muted:#7d7d86; --gold:#f2b705;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;color:var(--text);font-family:'Lato',Arial,sans-serif;font-size:17px;line-height:1.55;
+    background:radial-gradient(ellipse 90% 45% at 50% 0%, rgba(242,183,5,.12), transparent 65%), var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:680px;margin:0 auto;padding:36px 20px 48px}
+  .marca{display:flex;align-items:center;justify-content:center;gap:9px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px}
+  .pill{margin:34px auto 0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center}
+  h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(30px,7vw,42px);line-height:1.1;text-align:center;margin:10px 0 0;letter-spacing:-.01em;text-wrap:balance}
+  h1 span{color:var(--gold)}
+  .sub{text-align:center;color:var(--dim);font-size:17px;margin:14px auto 0;max-width:520px;text-wrap:balance}
+
+  .pasos{list-style:none;margin:36px 0 0;padding:0}
+  .paso{position:relative;display:grid;grid-template-columns:48px 1fr;column-gap:16px;padding-bottom:26px}
+  .paso:last-child{padding-bottom:0}
+  .paso:not(:last-child)::before{content:"";position:absolute;left:24px;top:46px;bottom:0;width:2px;background:var(--line);transform:translateX(-1px)}
+  .paso.hecho:not(:last-child)::before{background:var(--gold);opacity:.55}
+  .num{
+    width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;background:var(--card);border:2px solid var(--line);color:var(--dim);
+  }
+  .hecho .num{background:rgba(242,183,5,.16);border-color:rgba(242,183,5,.55);color:var(--gold)}
+  .hecho .num span{display:none}
+  .hecho .num::after{content:"";width:18px;height:10px;border-left:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(-45deg) translate(1px,-2px)}
+  .t{font-family:'Montserrat',sans-serif;font-weight:700;font-size:19px;line-height:1.25;margin:6px 0 5px}
+  .d{color:var(--dim);font-size:16.5px}
+  .d b{color:var(--text)}
+  .hecho .t{color:var(--dim)}
+  .hecho .d,.hecho .d b{color:var(--muted)}
+  .precio{display:inline-block;margin-left:6px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--gold);border:1px solid rgba(242,183,5,.5);border-radius:999px;padding:1px 9px;vertical-align:3px}
+
+  .actual .cuerpo{
+    background:linear-gradient(180deg, rgba(242,183,5,.13), rgba(242,183,5,.06));
+    border:1.5px solid rgba(242,183,5,.75);border-radius:18px;padding:16px 18px 18px;margin-top:-4px;
+    box-shadow:0 0 0 6px rgba(242,183,5,.06);
+  }
+  .actual .num{background:var(--gold);border-color:var(--gold);color:#111;box-shadow:0 0 0 6px rgba(242,183,5,.18)}
+  .actual .t{margin-top:10px;color:var(--text)}
+  .actual .d{color:#e6e6e2}
+  .aqui{display:none}
+  .actual .aqui{
+    display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:#111;font-family:'Montserrat',sans-serif;
+    font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;
+  }
+  .actual .aqui::before{content:"";width:7px;height:7px;border-radius:50%;background:#111}
+  .tip{display:none}
+  .actual .tip{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(242,183,5,.45);font-size:15.5px;color:var(--dim)}
+  .tip b{color:var(--gold)}
+
+  .pie{margin-top:40px;padding-top:22px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;color:var(--dim);font-size:15px}
+  .pie b{color:var(--text);font-family:'Montserrat',sans-serif}
+  .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;cursor:pointer}
+
+  @media (max-width:480px){
+    .page{padding:28px 16px 40px}
+    .paso{grid-template-columns:42px 1fr;column-gap:13px}
+    .num{width:42px;height:42px;font-size:16px}
+    .paso:not(:last-child)::before{left:21px;top:40px}
+    .t{font-size:17.5px}
+    .d{font-size:16px}
+  }
+  @media print{
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .no-print{display:none !important}
+    .paso{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNW7N7XT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<main class="page">
+  <div class="marca">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 14v4M8 10v8M12 6v12M16 11v7M20 9v9"/></svg>
+    Madriguera Home Studio
+  </div>
+
+  <div class="pill">Así trabajamos tu canción</div>
+  <h1>De tu demo a <span>plataformas</span> en 8 pasos</h1>
+  <p class="sub">Para que no haya sorpresas, aquí va el proceso completo, de principio a fin, y en qué paso vamos contigo.</p>
+
+  <ol class="pasos" id="pasos">
+    <li class="paso" data-paso="1">
+      <div class="num"><span>1</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Mandas tu aplicación</div>
+        <div class="d">Llenas el formulario con el link de tu demo. Te toma un par de minutos.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="2">
+      <div class="num"><span>2</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Escuchamos tu canción y te escribimos</div>
+        <div class="d">Por WhatsApp, en máximo 24 horas, para platicar y ver si podemos trabajar juntos.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="3">
+      <div class="num"><span>3</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Nos mandas tu tracking</div>
+        <div class="d">Es decir, los audios de tu canción, <b>cada instrumento y voz por separado</b>, por Google Drive, WeTransfer o la plataforma que uses para mandar archivos pesados.</div>
+        <div class="tip"><b>Importante:</b> si usas Google Drive, revisa que el link tenga permiso para que cualquiera con el link pueda abrirlo. Si no sabes cómo sacar tus audios, dime y te ayudo.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="4">
+      <div class="num"><span>4</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Hacemos la revisión técnica</div>
+        <div class="d">Escuchamos tus audios uno por uno para asegurarnos de que no vengan cortados ni distorsionados. Si algo viene mal, te avisamos antes de arrancar.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="5">
+      <div class="num"><span>5</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Apartas tu lugar y agendamos tu mezcla <span class="precio">$250</span></div>
+        <div class="d">Con los primeros $250 pesos apartas tu lugar y te damos una fecha exacta de entrega.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="6">
+      <div class="num"><span>6</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Te entregamos la mezcla</div>
+        <div class="d">El día acordado.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="7">
+      <div class="num"><span>7</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">Etapa de revisiones</div>
+        <div class="d">Tú escuchas, me dices qué mover y lo ajustamos, hasta que la mezcla quede sonando como te gusta.</div>
+      </div>
+    </li>
+    <li class="paso" data-paso="8">
+      <div class="num"><span>8</span></div>
+      <div class="cuerpo">
+        <span class="aqui">Tú estás aquí</span>
+        <div class="t">El máster de tu canción <span class="precio">$250</span></div>
+        <div class="d">Te entregamos el archivo final listo para Spotify, Apple Music, YouTube y demás. Aquí cubres los otros $250 pesos, solo si te gustó el resultado.</div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="pie">
+    <span>¿Dudas? <b>Escríbeme por WhatsApp</b></span>
+  </div>
+</main>
+
+<script>
+(function(){
+  // Siempre marca el paso 3 (mandar el tracking): es cuando Miguel manda esta pagina. Los anteriores quedan como hechos.
+  var n = 3;
+  document.querySelectorAll('#pasos .paso').forEach(function(li){
+    var p = parseInt(li.getAttribute('data-paso'), 10);
+    if (p < n) li.classList.add('hecho');
+    if (p === n) li.classList.add('actual');
+  });
+})();
+</script>
+</body>
+</html>
