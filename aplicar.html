@@ -236,6 +236,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var PAGINA_NO_CALIFICADO = 'no-calificado';
   // -----------------
 
+  // Etiquetas del anuncio guardadas por la landing (o en el link de esta pagina). Vencen a los 30 dias.
+  function leerUtm(){
+    try {
+      var q = new URLSearchParams(location.search), d = {};
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','placement'].forEach(function(k){ if (q.get(k)) d[k] = q.get(k).slice(0, 200); });
+      if (Object.keys(d).length) return d;
+      var g = JSON.parse(localStorage.getItem('mhs_utm') || 'null');
+      if (g && Date.now() - (g.t || 0) < 30 * 864e5) { delete g.t; return g; }
+    } catch (e) {}
+    return {};
+  }
+
   var TOTAL = 5;
   var paso = 1;
   var datos = { genero: null, grabacion: null, plataformas: null, distribuidora: null };
@@ -332,7 +344,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       grabacion: datos.grabacion,
       plataformas: datos.plataformas,
       distribuidora: datos.distribuidora,
-      demo_url: $('demo').value.trim()
+      demo_url: $('demo').value.trim(),
+      utm: leerUtm()
     };
 
     fetch(SUPABASE_URL + '/rest/v1/rpc/enviar_aplicacion', {
@@ -362,6 +375,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   mostrar(1);
+})();
+</script>
+<script>
+// Etiquetas del anuncio (utm_source, utm_medium, ...): se guardan 30 dias para que el formulario sepa si vino de Ads.
+(function(){
+  try {
+    var q = new URLSearchParams(location.search), d = {}, hay = false;
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','placement'].forEach(function(k){
+      var v = q.get(k); if (v) { d[k] = v.slice(0, 200); hay = true; }
+    });
+    if (hay) { d.t = Date.now(); localStorage.setItem('mhs_utm', JSON.stringify(d)); }
+  } catch (e) {}
 })();
 </script>
 </body>

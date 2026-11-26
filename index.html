@@ -835,5 +835,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script>
+// Etiquetas del anuncio (utm_source, utm_medium, ...): se guardan 30 dias para que el formulario sepa si vino de Ads.
+(function(){
+  try {
+    var q = new URLSearchParams(location.search), d = {}, hay = false;
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','placement'].forEach(function(k){
+      var v = q.get(k); if (v) { d[k] = v.slice(0, 200); hay = true; }
+    });
+    if (hay) { d.t = Date.now(); localStorage.setItem('mhs_utm', JSON.stringify(d)); }
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
